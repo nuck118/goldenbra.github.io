@@ -1,0 +1,140 @@
+/*header{
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+body {
+    background-color: #f2ea0b2f;
+    color: #000000;
+    margin: 0;
+    
+  }
+main{
+    margin: 0;
+    text-align: center;
+    display:grid;
+    
+    font-style: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+section {
+    padding: 20px;
+}
+ul,p{
+    text-transform: capitalize;
+
+}
+ul{
+    text-transform: lowercase;
+   padding-left: 100px;
+   padding-right: 100px;
+}
+li{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align:left;
+    margin: 0;
+    display:inline-flex;
+}
+
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }*/
+  /* Apply default styles to the body element */
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: url("1.jpg");
+    background-blend-mode:lighten;
+  }
+  
+  /* Style the header element */
+  header {
+    background-color: #47443c;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 36px;
+  }
+  
+  /* Style the navigation menu */
+  nav {
+    background-color: #333;
+    color: #fff;
+  }
+  
+ /* nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }*/
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding-inline: 0;
+    margin: 0;
+  }
+  
+  
+  nav li {
+    float: left;
+  }
+  
+  nav a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    background-color: #111;
+  }
+  
+  /* Style the main content section */
+  main {
+    margin: 20px;
+  }
+  
+  section {
+    margin: 20px 0;
+  }
+  
+  section h2 {
+    font-size: 24px;
+  }
+  
+  section p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the footer */
+  footer {
+    background-color: #47443c;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+  
