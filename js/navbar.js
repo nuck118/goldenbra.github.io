@@ -8,6 +8,25 @@ document.addEventListener('DOMContentLoaded', function() {
             <nav class="desktop-nav">
                 <ul class="nav-menu">
                     ${createNavLinks()}
+                    <li class="admin-link">
+                        <a href="#" class="admin-login">
+                            <i class="fas fa-lock"></i>
+                            <span>Admin</span>
+                        </a>
+                        <div class="admin-dropdown">
+                            <form id="adminLoginForm">
+                                <div class="form-group">
+                                    <label for="username">Username:</label>
+                                    <input type="text" id="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password:</label>
+                                    <input type="password" id="password" required>
+                                </div>
+                                <button type="submit" class="btn">Login</button>
+                            </form>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="Open menu">
@@ -21,6 +40,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </button>
                 <ul class="mobile-nav-menu">
                     ${createNavLinks()}
+                    <li>
+                        <a href="#" class="admin-login-mobile">
+                            <i class="fas fa-lock"></i>
+                            Admin Login
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -43,14 +68,41 @@ document.addEventListener('DOMContentLoaded', function() {
         closeMobileMenu();
     });
 
-    // Close mobile menu if clicking outside of it
+    // Admin login functionality
+    const adminLink = document.querySelector('.admin-link');
+    const adminDropdown = document.querySelector('.admin-dropdown');
+    const adminLoginForm = document.getElementById('adminLoginForm');
+    const mobileAdminLink = document.querySelector('.admin-login-mobile');
+
+    adminLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        adminDropdown.classList.toggle('active');
+    });
+
+    mobileAdminLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const username = prompt('Enter username:');
+        const password = prompt('Enter password:');
+        handleAdminLogin(username, password);
+    });
+
+    adminLoginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        handleAdminLogin(username, password);
+    });
+
     document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
+        if (!mobileNav.contains(e.target) {
             closeMobileMenu();
+        }
+        if (!adminLink.contains(e.target)) {
+            adminDropdown.classList.remove('active');
         }
     });
 
-    // Add active class to current page link
+    // Add active class to current page
     setActiveLink();
 
     function createNavLinks() {
@@ -79,5 +131,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.classList.add('active');
             }
         });
+    }
+
+    function handleAdminLogin(username, password) {
+        // Replace with actual authentication logic
+        if (username === 'admin' && password === 'password') {
+            window.location.href = 'admin/dashboard.html';
+        } else {
+            alert('Invalid credentials');
+        }
     }
 });
