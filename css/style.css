@@ -1,85 +1,100 @@
+/* ===== Base Styles ===== */
 :root {
     --primary-color: #2A5C82;
     --secondary-color: #4B86B4;
     --accent-color: #FFA500;
     --dark-color: #1A365D;
     --light-color: #F8F9FA;
+    --text-color: #333;
+    --white: #FFFFFF;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     line-height: 1.6;
-    color: var(--dark-color);
+    color: var(--text-color);
+    background-color: var(--light-color);
 }
 
-.main-nav {
-    background: var(--primary-color);
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-speed) ease;
 }
 
-.nav-container {
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 2rem;
 }
 
-.logo {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-decoration: none;
+/* ===== Header & Navigation ===== */
+.header {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.nav-links {
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.navbar {
     display: flex;
-    gap: 2rem;
+    justify-content: space-between;
     align-items: center;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
 }
 
-.nav-links a:hover {
+.nav-menu a {
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all var(--transition-speed) ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
     color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.menu-toggle {
+.mobile-menu-toggle {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: var(--white);
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--primary-color);
-        flex-direction: column;
-        padding: 1rem;
-        text-align: center;
-    }
-    
-    .nav-links.active {
-        display: flex;
-    }
-    
-    .menu-toggle {
-        display: block;
-    }
-}
 /* Mobile Navigation */
 .mobile-nav {
     display: none;
@@ -98,32 +113,176 @@ body {
 
 .mobile-nav-content {
     background: var(--primary-color);
-    padding: 1rem;
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
     position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
 }
 
 .mobile-nav-close {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    color: white;
+    color: var(--white);
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-/* Show/hide desktop/mobile nav based on screen size */
+.mobile-nav-menu {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.mobile-nav-menu li {
+    margin: 1.5rem 0;
+}
+
+.mobile-nav-menu a {
+    color: var(--white);
+    font-size: 1.2rem;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.mobile-nav-menu a:hover,
+.mobile-nav-menu a.active {
+    color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Main Content ===== */
+.main-content {
+    padding: 2rem 0;
+}
+
+.section-title {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+}
+
+/* ===== Footer ===== */
+.footer {
+    background: var(--dark-color);
+    color: var(--white);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin: 0.5rem 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.2rem;
+    transition: color var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Responsive Design ===== */
 @media (max-width: 768px) {
-    .desktop-nav {
+    .nav-menu {
         display: none;
     }
     
     .mobile-menu-toggle {
         display: block;
     }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (min-width: 769px) {
-    .mobile-menu-toggle {
-        display: none;
+    .mobile-nav {
+        display: none !important;
     }
+}
+
+/* ===== Utility Classes ===== */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 4px;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform var(--transition-speed) ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-text {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
 }
