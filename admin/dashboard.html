@@ -3,191 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - GOLDENBRA</title>
+    <title>Admin Dashboard - GOLDENBRA</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Login-specific styles */
-        .login-container {
-            display: flex;
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
             min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-            background: #ffffff;
         }
 
-        .login-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
+        .sidebar {
+            background: var(--dark-color);
+            padding: 2rem;
+            color: white;
         }
 
-        .login-card:hover {
-            transform: translateY(-5px);
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .login-header {
-            text-align: center;
+        .sidebar-nav a {
+            color: white;
+            padding: 0.5rem 0;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .editor-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-editor {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
         }
 
-        .login-logo {
-            width: 120px;
+        .editor-field {
             margin-bottom: 1.5rem;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .form-label {
+        .editor-field label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--dark-color);
             font-weight: 500;
         }
 
-        .input-field {
+        .editor-input {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #ffffffd3;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
-        .input-field:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-
-        .password-toggle {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #666;
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 1rem;
+        .editor-save-btn {
             background: var(--primary-color);
             color: white;
+            padding: 0.8rem 1.5rem;
             border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .login-btn:hover {
-            background: var(--secondary-color);
-        }
-
-        .login-footer {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .login-footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .login-footer a:hover {
-            text-decoration: underline;
-        }
-
-        .security-notice {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 1.5rem;
-            text-align: center;
+            transition: background 0.3s ease;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <img src="https://github.com/nuck118/goldenbra.github.io/blob/main/images/goldenbra.png?raw=true" alt="GOLDENBRA Logo" class="login-logo">
-                <h2>Admin Portal</h2>
-                <p>Secure access to management panel</p>
-            </div>
+    <script>
+        // Authentication Check
+        const authToken = localStorage.getItem('authToken');
+        if (!authToken || authToken !== 'authenticated') {
+            window.location.href = 'login.html';
+        }
 
-            <form id="adminLoginForm" class="login-form">
-                <div class="form-group">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" class="input-field" placeholder="Enter admin username" required autocomplete="username">
+        // Logout Functionality
+        function logout() {
+            localStorage.removeItem('authToken');
+            window.location.href = '../index.html';
+        }
+    </script>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <h3>Content Management</h3>
+                <ul>
+                    <li><a href="#home-editor">Home Page</a></li>
+                    <li><a href="#mission-editor">Mission Page</a></li>
+                    <li><a href="#services-editor">Services Page</a></li>
+                    <li><a href="#profile-editor">Profile Page</a></li>
+                    <li><a href="#contact-editor">Contact Page</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="editor-section">
+            <!-- Home Page Editor -->
+            <section id="home-editor" class="content-editor">
+                <h2>Home Page Editor</h2>
+                <div class="editor-field">
+                    <label>Hero Title</label>
+                    <input type="text" class="editor-input" data-content="home.heroTitle">
                 </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" class="input-field" placeholder="Enter password" required autocomplete="current-password">
-                    <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                <div class="editor-field">
+                    <label>Hero Subtitle</label>
+                    <textarea class="editor-input" data-content="home.heroSubtitle"></textarea>
                 </div>
+                <button class="editor-save-btn">Save Changes</button>
+            </section>
 
-                <div class="form-group">
-                    <label class="security-check">
-                        <input type="checkbox" id="rememberMe">
-                        Remember this device
-                    </label>
+            <!-- Mission Page Editor -->
+            <section id="mission-editor" class="content-editor">
+                <h2>Mission Page Editor</h2>
+                <div class="editor-field">
+                    <label>Mission Statement</label>
+                    <textarea class="editor-input" data-content="mission.statement"></textarea>
                 </div>
-
-                <button type="submit" class="login-btn">Sign In</button>
-
-                <div class="login-footer">
-                    <a href="../pages/contact.html">Forgot Password?</a>
+                <div class="editor-field">
+                    <label>Core Values</label>
+                    <div class="value-editor">
+                        <input type="text" class="editor-input" data-content="mission.values.0">
+                        <input type="text" class="editor-input" data-content="mission.values.1">
+                        <input type="text" class="editor-input" data-content="mission.values.2">
+                    </div>
                 </div>
+                <button class="editor-save-btn">Save Changes</button>
+            </section>
 
-                <div class="security-notice">
-                    <i class="fas fa-shield-alt"></i>
-                    <p>All login attempts are monitored and recorded</p>
-                </div>
-            </form>
-        </div>
+            <!-- Add other page editors following the same pattern -->
+        </main>
     </div>
 
     <script>
-        // Password visibility toggle
-        const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#password');
+        // Content Editor Functionality
+        document.querySelectorAll('.editor-input').forEach(input => {
+            // Load saved content
+            const contentKey = input.dataset.content;
+            input.value = localStorage.getItem(contentKey) || '';
 
-        togglePassword.addEventListener('click', function (e) {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash');
+            // Save on button click
+            input.closest('.content-editor').querySelector('button').addEventListener('click', () => {
+                localStorage.setItem(contentKey, input.value);
+                alert('Content updated successfully!');
+            });
         });
-
-        // Form validation using the provided script
-        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Use the provided handleAdminLogin function for authentication
-            handleAdminLogin(username, password);
-        });
-
-        function handleAdminLogin(username, password) {
-            if (username === 'admin' && password === 'password') {
-                // Store authentication state in localStorage
-                localStorage.setItem('isAuthenticated', 'true');
-                window.location.href = 'dashboard.html';
-            } else {
-                alert('Invalid credentials');
-            }
-        }
     </script>
 </body>
 </html>
