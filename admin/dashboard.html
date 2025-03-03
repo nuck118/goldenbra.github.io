@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Same head as index.html -->
-    <link rel="stylesheet" href="../css/admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GOLDENBRA</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="admin-dashboard">
-        <h1>Content Management System</h1>
-        <div class="content-editor">
-            <!-- Editable sections would be dynamically loaded here -->
-        </div>
-        <button class="btn-logout">Logout</button>
-    </div>
+    <script src="../js/navbar.js"></script>
 
-    <script src="../js/admin.js"></script>
+    <main class="main-content container">
+        <h1>Admin Dashboard</h1>
+        <div class="admin-content">
+            <section class="content-management">
+                <h2>Content Management</h2>
+                <!-- Add content editing forms here -->
+            </section>
+            
+            <section class="user-activity">
+                <h2>User Activity</h2>
+                <!-- Add activity logs here -->
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+        </div>
+    </footer>
+
+    <script>
+        // Check authentication
+        if (!localStorage.getItem('isAuthenticated')) {
+            window.location.href = 'login.html';
+        }
+
+        // Logout functionality
+        document.querySelector('.logout-btn').addEventListener('click', () => {
+            localStorage.removeItem('isAuthenticated');
+            window.location.href = '../index.html';
+        });
+
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
