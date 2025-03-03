@@ -1,0 +1,47 @@
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav-content {
+    background: var(--primary-color);
+    padding: 1rem;
+    position: relative;
+}
+
+.mobile-nav-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Show/hide desktop/mobile nav based on screen size */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none;
+    }
+}
