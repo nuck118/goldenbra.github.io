@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="nav-menu">
                     ${createNavLinks()}
                     <li class="admin-link">
-                        <a href="#" class="admin-login">
+                        <a href="login.html" class="admin-login">
                             <i class="fas fa-lock"></i>
                             <span>Admin</span>
                         </a>
