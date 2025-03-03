@@ -8,11 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <nav class="desktop-nav">
                 <ul class="nav-menu">
                     ${createNavLinks()}
-                    <li class="admin-link">
-                        <a href="login.html" class="admin-login-btn">
-                            <i class="fas fa-lock"></i>
-                            <span>Admin Login</span>
-                        </a>
+                    <li>
+                        <a href="login.html" class="btn">Login</a>
                     </li>
                 </ul>
             </nav>
@@ -28,10 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="mobile-nav-menu">
                     ${createNavLinks()}
                     <li>
-                        <a href="login.html" class="admin-login-mobile">
-                            <i class="fas fa-lock"></i>
-                            Admin Login
-                        </a>
+                        <a href="login.html" class="btn">Login</a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function setActiveLink() {
         const currentPage = window.location.pathname.split('/').pop();
         const links = document.querySelectorAll('.nav-menu a, .mobile-nav-menu a');
-
+        
         links.forEach(link => {
             const linkPage = link.getAttribute('href').split('/').pop();
             if (currentPage === linkPage || (currentPage === '' && linkPage === 'index.html')) {
