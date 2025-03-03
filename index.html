@@ -1,143 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-    <title>GOLDENBRA - Innovative Construction Solutions</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Leading construction and engineering solutions provider in Zambia since 2015">
-    <meta name="keywords" content="construction, engineering, Zambia, infrastructure, building materials">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G102TJ3JE3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-G102TJ3JE3');
-    </script>
+    <title>GOLDENBRA - Professional Construction Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header class="hero">
-        <div class="header-content">
-            <h1 class="logo">GOLDENBRA</h1>
-            <p class="tagline">Building Zambia's Future Since 2015</p>
+    <!-- Retractable Menu -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="logo">GOLDENBRA</a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="pages/mission.html">Mission</a>
+                <a href="pages/profile.html">Profile</a>
+                <a href="pages/services.html">Services</a>
+                <a href="pages/details.html">Details</a>
+                <a href="pages/contact.html">Contact</a>
+                <a href="admin/login.html" class="admin-login"><i class="fas fa-lock"></i></a>
+            </div>
         </div>
-        <nav class="sticky-nav">
-            <ul class="nav-list">
-                <li><a href="#Mission-Statement" class="nav-link"><i class="fas fa-bullseye"></i> Mission</a></li>
-                <li><a href="#Company-Profile" class="nav-link"><i class="fas fa-building"></i> Profile</a></li>
-                <li><a href="#Services-Offered" class="nav-link"><i class="fas fa-tools"></i> Services</a></li>
-                <li><a href="#Company-Details" class="nav-link"><i class="fas fa-info-circle"></i> Details</a></li>
-                <li><a href="#Contact-Details" class="nav-link"><i class="fas fa-address-book"></i> Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    </nav>
 
-    <main class="container">
-        <section id="Mission-Statement" class="card fade-in">
-            <h2><i class="fas fa-crosshairs"></i> Mission Statement</h2>
-            <p class="highlight">The main mission of <strong>GOLDEN BRA INVESTMENT LTD</strong> is to provide quality construction products and services through:</p>
-            <div class="mission-grid">
-                <div class="mission-item">
-                    <i class="fas fa-clock"></i>
-                    <h3>Timely Delivery</h3>
-                    <p>Guaranteed project completion within deadlines</p>
-                </div>
-                <div class="mission-item">
-                    <i class="fas fa-users"></i>
-                    <h3>Client-Centric Approach</h3>
-                    <p>Customized solutions for every project</p>
-                </div>
-                <div class="mission-item">
-                    <i class="fas fa-certificate"></i>
-                    <h3>Quality Assurance</h3>
-                    <p>International standards compliance</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="Company-Profile" class="card fade-in">
-            <h2><i class="fas fa-city"></i> Company Profile</h2>
-            <div class="profile-grid">
-                <div class="profile-text">
-                    <p class="highlight"><strong>GOLDEN BRA INVESTMENT LTD</strong> is a leading Zambian construction firm specializing in:</p>
-                    <ul class="expertise-list">
-                        <li><i class="fas fa-hard-hat"></i> Civil Engineering</li>
-                        <li><i class="fas fa-cogs"></i> Mechanical Solutions</li>
-                        <li><i class="fas fa-bolt"></i> Electrical Systems</li>
-                    </ul>
-                    <p>With over 10 years of experience, we've delivered 150+ projects across multiple sectors, maintaining a 98% client satisfaction rate.</p>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h4>2015</h4>
-                        <p>Company Founded in Solwezi</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h4>2018</h4>
-                        <p>Expanded to National Operations</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h4>2023</h4>
-                        <p>Awarded Best Regional Contractor</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="Services-Offered" class="card fade-in">
-            <h2><i class="fas fa-concierge-bell"></i> Services Offered</h2>
-            <div class="services-grid">
-                <!-- Services would be converted to cards with icons -->
-                <div class="service-card">
-                    <i class="fas fa-tractor"></i>
-                    <h3>Civil Engineering</h3>
-                    <p>Comprehensive infrastructure solutions</p>
-                </div>
-                <!-- Repeat for other services -->
-            </div>
-        </section>
-
-        <section id="Company-Details" class="card fade-in">
-            <h2><i class="fas fa-file-contract"></i> Company Details</h2>
-            <div class="details-grid">
-                <div class="detail-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Headquarters</h3>
-                    <p>Plot 48 Weighbridge Area, Solwezi</p>
-                </div>
-                <!-- Other details in similar format -->
-            </div>
-        </section>
-
-        <section id="Contact-Details" class="card fade-in">
-            <h2><i class="fas fa-phone-alt"></i> Contact Us</h2>
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <!-- Modern form fields -->
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <!-- Enhanced contact details with clickable links -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p>&copy; 2015-2025 GOLDENBRA INVESTMENT LTD | ISO 9001 Certified</p>
-        </div>
-    </footer>
-
-    <script src="app.js"></script>
+    <!-- Page-specific content loaded here -->
+    
+    <script src="js/main.js"></script>
 </body>
 </html>
