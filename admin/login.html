@@ -13,7 +13,7 @@
             min-height: 100vh;
             align-items: center;
             justify-content: center;
-            background: #ffffff/*linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%)*/;
+            background: #ffffff;
         }
 
         .login-card {
@@ -114,6 +114,21 @@
             margin-top: 1.5rem;
             text-align: center;
         }
+
+        .return-home {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .return-home a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .return-home a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -161,6 +176,10 @@
                     <a href="../pages/contact.html">Forgot Password?</a>
                 </div>
 
+                <div class="return-home">
+                    <a href="../index.html">← Return to Home</a>
+                </div>
+
                 <div class="security-notice">
                     <i class="fas fa-shield-alt"></i>
                     <p>All login attempts are monitored and recorded</p>
@@ -188,6 +207,7 @@
             
             // Add actual authentication logic here
             if(username === 'admin' && password === 'securepassword') {
+                localStorage.setItem('authToken', 'authenticated');
                 window.location.href = 'dashboard.html';
             } else {
                 alert('Invalid credentials. Please try again.');
