@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     header.innerHTML = `
         <div class="container">
             <h1 class="logo">GOLDENBRA</h1>
-            <nav class="desktop-nav">
+            <!--<nav class="desktop-nav">
                 <ul class="nav-menu">
                     ${createNavLinks()}
                     <li class="admin-link">
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </li>
                 </ul>
-            </nav>
+            </nav>-->
             <button class="mobile-menu-toggle" aria-label="Open menu">
                 <i class="fas fa-bars"></i>
             </button>
