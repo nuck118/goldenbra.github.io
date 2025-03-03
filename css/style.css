@@ -453,3 +453,34 @@ img {
         padding: 1rem;
     }
 }
+/* Admin Login Button */
+.admin-link a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: var(--white);
+    border-radius: 4px;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.admin-link a:hover {
+    background: var(--secondary-color);
+}
+
+/* Mobile Admin Login Button */
+.mobile-nav-menu .admin-login-mobile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--accent-color);
+    color: var(--white);
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.mobile-nav-menu .admin-login-mobile:hover {
+    background: var(--secondary-color);
+}
