@@ -38,6 +38,53 @@ img {
     height: auto;
 }
 
+
+
+
+.admin-nav-item {
+    margin-left: auto;
+}
+
+.admin-login-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: var(--white);
+    border-radius: 0.5rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.admin-login-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.admin-login-btn i {
+    font-size: 1rem;
+}
+
+/* Mobile Admin Button */
+.mobile-nav-menu .admin-login-btn {
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--primary-color);
+}
+
+.mobile-nav-menu .admin-login-btn:hover {
+    background: var(--secondary-color);
+}
+
+
+
+
+
+
+
+
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
