@@ -1,5 +1,5 @@
 
-/*document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Create navigation structure
     const header = document.createElement('header');
     header.className = 'header';
