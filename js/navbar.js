@@ -1,6 +1,5 @@
-// Create dynamic navigation bar
 document.addEventListener('DOMContentLoaded', function() {
-    // Create header
+    // Create navigation structure
     const header = document.createElement('header');
     header.className = 'header';
     header.innerHTML = `
@@ -8,30 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
             <h1 class="logo">GOLDENBRA</h1>
             <nav class="desktop-nav">
                 <ul class="nav-menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../pages/mission.html">Mission</a></li>
-                    <li><a href="../pages/profile.html">Profile</a></li>
-                    <li><a href="../pages/services.html">Services</a></li>
-                    <li><a href="../pages/details.html">Details</a></li>
-                    <li><a href="../pages/contact.html">Contact</a></li>
+                    ${createNavLinks()}
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle">
+            <button class="mobile-menu-toggle" aria-label="Open menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
         <div class="mobile-nav">
             <div class="mobile-nav-content">
-                <button class="mobile-nav-close">
+                <button class="mobile-nav-close" aria-label="Close menu">
                     <i class="fas fa-times"></i>
                 </button>
                 <ul class="mobile-nav-menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../pages/mission.html">Mission</a></li>
-                    <li><a href="../pages/profile.html">Profile</a></li>
-                    <li><a href="../pages/services.html">Services</a></li>
-                    <li><a href="../pages/details.html">Details</a></li>
-                    <li><a href="../pages/contact.html">Contact</a></li>
+                    ${createNavLinks()}
                 </ul>
             </div>
         </div>
@@ -40,37 +29,54 @@ document.addEventListener('DOMContentLoaded', function() {
     // Insert header at top of body
     document.body.insertBefore(header, document.body.firstChild);
 
-    // Mobile menu functionality
+    // Add mobile menu functionality
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const mobileNav = document.querySelector('.mobile-nav');
     const mobileClose = document.querySelector('.mobile-nav-close');
 
     mobileToggle.addEventListener('click', () => {
         mobileNav.classList.add('active');
+        document.body.style.overflow = 'hidden';
     });
 
     mobileClose.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
+        closeMobileMenu();
     });
 
-    // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
-            mobileNav.classList.remove('active');
+            closeMobileMenu();
         }
     });
 
-    // Add active class to current page link
+    // Add active class to current page
+    setActiveLink();
+
+    function createNavLinks() {
+        return `
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="mission.html">Mission</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="details.html">Details</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        `;
+    }
+
+    function closeMobileMenu() {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
     function setActiveLink() {
         const currentPage = window.location.pathname.split('/').pop();
         const links = document.querySelectorAll('.nav-menu a, .mobile-nav-menu a');
         
         links.forEach(link => {
-            if (link.getAttribute('href').includes(currentPage)) {
+            const linkPage = link.getAttribute('href').split('/').pop();
+            if (currentPage === linkPage || (currentPage === '' && linkPage === 'index.html')) {
                 link.classList.add('active');
             }
         });
     }
-
-    setActiveLink();
 });
