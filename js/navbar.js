@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleAdminLogin(username, password) {
         if (username === 'admin' && password === 'password') {
-            window.location.href = 'admin/dashboard.html';
+            window.location.href = "admin/dashboard.html";
         } else {
             alert('Invalid credentials');
         }
