@@ -43,13 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
         closeMobileMenu();
     });
 
+    // Close mobile menu if clicking outside of it
     document.addEventListener('click', (e) => {
         if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
             closeMobileMenu();
         }
     });
 
-    // Add active class to current page
+    // Add active class to current page link
     setActiveLink();
 
     function createNavLinks() {
