@@ -54,11 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Insert header at top of body
     document.body.insertBefore(header, document.body.firstChild);
 
-    // Add mobile menu functionality
+    // Select elements after insertion
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const mobileNav = document.querySelector('.mobile-nav');
     const mobileClose = document.querySelector('.mobile-nav-close');
+    const adminLink = document.querySelector('.admin-link');
+    const adminDropdown = document.querySelector('.admin-dropdown');
+    const adminLoginForm = document.getElementById('adminLoginForm');
+    const mobileAdminLink = document.querySelector('.admin-login-mobile');
 
+    // Mobile menu functionality
     mobileToggle.addEventListener('click', () => {
         mobileNav.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -68,12 +73,16 @@ document.addEventListener('DOMContentLoaded', function() {
         closeMobileMenu();
     });
 
-    // Admin login functionality
-    const adminLink = document.querySelector('.admin-link');
-    const adminDropdown = document.querySelector('.admin-dropdown');
-    const adminLoginForm = document.getElementById('adminLoginForm');
-    const mobileAdminLink = document.querySelector('.admin-login-mobile');
+    document.addEventListener('click', (e) => {
+        if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
+            closeMobileMenu();
+        }
+        if (!adminLink.contains(e.target) && !adminDropdown.contains(e.target)) {
+            adminDropdown.classList.remove('active');
+        }
+    });
 
+    // Admin login functionality
     adminLink.addEventListener('click', (e) => {
         e.preventDefault();
         adminDropdown.classList.toggle('active');
@@ -93,16 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         handleAdminLogin(username, password);
     });
 
-    document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) {
-            closeMobileMenu();
-        }
-        if (!adminLink.contains(e.target)) {
-            adminDropdown.classList.remove('active');
-        }
-    });
-
-    // Add active class to current page
+    // Set active link based on current page
     setActiveLink();
 
     function createNavLinks() {
@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleAdminLogin(username, password) {
-        // Replace with actual authentication logic
         if (username === 'admin' && password === 'password') {
             window.location.href = 'admin/dashboard.html';
         } else {
