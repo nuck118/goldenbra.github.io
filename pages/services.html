@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - GOLDENBRA</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <script src="../js/navbar.js"></script>
+
+    <main class="main-content">
+        <section class="hero-section services-hero">
+            <div class="hero-overlay">
+                <div class="container">
+                    <h1>Our Services</h1>
+                    <p>Comprehensive solutions for all your construction needs</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-content container">
+            <div class="content-card">
+                <h2>What We Offer</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-building"></i>
+                        <h3>Civil Engineering</h3>
+                        <p>Infrastructure development and construction management.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-tools"></i>
+                        <h3>Mechanical Engineering</h3>
+                        <p>Design and installation of mechanical systems.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Electrical Engineering</h3>
+                        <p>Electrical systems design and implementation.</p>
+                    </div>
+                    <!-- Add more services as needed -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Same footer as index.html -->
+            </div>
+            <div class="copyright">
+                <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
