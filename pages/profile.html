@@ -5,33 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile - GOLDENBRA</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <script src="../js/navbar.js"></script>
-    <header class="header">
-        <!-- Same header as index.html -->
-    </header>
 
-    <main class="main-content container">
-        <section class="profile-section">
-            <h2>Company Profile</h2>
-            <div class="profile-grid">
-                <div class="profile-history">
-                    <h3>Our History</h3>
-                    <p>Founded in 2015, GOLDENBRA has grown to become...</p>
+    <main class="main-content">
+        <section class="hero-section profile-hero">
+            <div class="hero-overlay">
+                <div class="container">
+                    <h1>Company Profile</h1>
+                    <p>Your trusted partner in construction and engineering</p>
                 </div>
-                <div class="achievements">
-                    <h3>Achievements</h3>
-                    <ul class="achievements-list">
-                        <li>150+ Completed Projects</li>
-                        <li>98% Client Satisfaction</li>
-                        <li>5 Industry Awards</li>
-                    </ul>
+            </div>
+        </section>
+
+        <section class="profile-content container">
+            <div class="content-card">
+                <h2>About GOLDENBRA</h2>
+                <p class="highlight"><strong>GOLDENBRA INVESTMENT LTD</strong> is a leading construction and engineering firm based in Zambia, delivering innovative solutions since 2015.</p>
+                
+                <div class="profile-grid">
+                    <div class="profile-item">
+                        <i class="fas fa-history"></i>
+                        <h3>Our History</h3>
+                        <p>Founded in Solwezi, we've grown to become a national leader in construction services.</p>
+                    </div>
+                    <div class="profile-item">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Achievements</h3>
+                        <p>150+ successful projects and multiple industry awards.</p>
+                    </div>
+                    <div class="profile-item">
+                        <i class="fas fa-users-cog"></i>
+                        <h3>Our Team</h3>
+                        <p>Experienced professionals dedicated to excellence.</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="../js/script.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Same footer as index.html -->
+            </div>
+            <div class="copyright">
+                <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
