@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="mobile-nav-menu">
                     ${createNavLinks()}
                     <li>
-                        <a href="admin/login.html" class="admin-login-mobile">
+                        <a href="admin/login.html" <!--class="admin-login-mobile"-->>
                             <i class="fas fa-lock"></i>
                             Admin Login
                         </a>
