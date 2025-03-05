@@ -191,18 +191,34 @@
                 </div>
                 <button class="editor-save-btn">Save Changes</button>
             </section>
+
+            <section id="services-editor" class="content-editor">
+                <h2>Services Page Editor</h2>
+                <div class="editor-field">
+                    <label>Services Description</label>
+                    <textarea class="editor-input" data-content="services.description"></textarea>
+                </div>
+                <button class="editor-save-btn">Save Changes</button>
+            </section>
+
+            <section id="profile-editor" class="content-editor">
+                <h2>Profile Page Editor</h2>
+                <div class="editor-field">
+                    <label>Profile Information</label>
+                    <textarea class="editor-input" data-content="profile.info"></textarea>
+                </div>
+                <button class="editor-save-btn">Save Changes</button>
+            </section>
+
+            <section id="contact-editor" class="content-editor">
+                <h2>Contact Page Editor</h2>
+                <div class="editor-field">
+                    <label>Contact Information</label>
+                    <textarea class="editor-input" data-content="contact.info"></textarea>
+                </div>
+                <button class="editor-save-btn">Save Changes</button>
+            </section>
         </main>
     </div>
-    
-    <script>
-        document.querySelectorAll('.editor-input').forEach(input => {
-            const contentKey = input.dataset.content;
-            input.value = localStorage.getItem(contentKey) || '';
-            input.closest('.content-editor').querySelector('button').addEventListener('click', () => {
-                localStorage.setItem(contentKey, input.value);
-                alert('Content updated successfully!');
-            });
-        });
-    </script>
 </body>
 </html>
