@@ -166,29 +166,28 @@
         </aside>
         
         <main class="editor-section">
-            <section id="services-editor" class="content-editor">
-                <h2>Services Page Editor</h2>
+            <section id="home-editor" class="content-editor">
+                <h2>Home Page Editor</h2>
                 <div class="editor-field">
-                    <label>Service Description</label>
-                    <textarea class="editor-input" data-content="services.description"></textarea>
+                    <label>Hero Title</label>
+                    <input type="text" class="editor-input" data-content="home.heroTitle">
+                </div>
+                <div class="editor-field">
+                    <label>Hero Subtitle</label>
+                    <textarea class="editor-input" data-content="home.heroSubtitle"></textarea>
+                </div>
+                <div class="editor-field">
+                    <label>Upload Image</label>
+                    <input type="file" class="editor-input" data-content="home.image">
                 </div>
                 <button class="editor-save-btn">Save Changes</button>
             </section>
             
-            <section id="profile-editor" class="content-editor">
-                <h2>Profile Page Editor</h2>
+            <section id="mission-editor" class="content-editor">
+                <h2>Mission Page Editor</h2>
                 <div class="editor-field">
-                    <label>Profile Bio</label>
-                    <textarea class="editor-input" data-content="profile.bio"></textarea>
-                </div>
-                <button class="editor-save-btn">Save Changes</button>
-            </section>
-            
-            <section id="contact-editor" class="content-editor">
-                <h2>Contact Page Editor</h2>
-                <div class="editor-field">
-                    <label>Contact Email</label>
-                    <input type="email" class="editor-input" data-content="contact.email">
+                    <label>Mission Statement</label>
+                    <textarea class="editor-input" data-content="mission.statement"></textarea>
                 </div>
                 <button class="editor-save-btn">Save Changes</button>
             </section>
