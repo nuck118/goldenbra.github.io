@@ -133,19 +133,16 @@
 </head>
 <body>
     <script>
-        // Authentication Check
         const authToken = localStorage.getItem('authToken');
         if (!authToken || authToken !== 'authenticated') {
             window.location.href = 'login.html';
         }
         
-        // Logout Functionality
         function logout() {
             localStorage.removeItem('authToken');
             window.location.href = '../index.html';
         }
         
-        // Sidebar Toggle
         function toggleSidebar() {
             document.querySelector('.sidebar').classList.toggle('show');
         }
@@ -169,32 +166,29 @@
         </aside>
         
         <main class="editor-section">
-            <section id="home-editor" class="content-editor">
-                <h2>Home Page Editor</h2>
+            <section id="services-editor" class="content-editor">
+                <h2>Services Page Editor</h2>
                 <div class="editor-field">
-                    <label>Hero Title</label>
-                    <input type="text" class="editor-input" data-content="home.heroTitle">
-                </div>
-                <div class="editor-field">
-                    <label>Hero Subtitle</label>
-                    <textarea class="editor-input" data-content="home.heroSubtitle"></textarea>
+                    <label>Service Description</label>
+                    <textarea class="editor-input" data-content="services.description"></textarea>
                 </div>
                 <button class="editor-save-btn">Save Changes</button>
             </section>
             
-            <section id="mission-editor" class="content-editor">
-                <h2>Mission Page Editor</h2>
+            <section id="profile-editor" class="content-editor">
+                <h2>Profile Page Editor</h2>
                 <div class="editor-field">
-                    <label>Mission Statement</label>
-                    <textarea class="editor-input" data-content="mission.statement"></textarea>
+                    <label>Profile Bio</label>
+                    <textarea class="editor-input" data-content="profile.bio"></textarea>
                 </div>
+                <button class="editor-save-btn">Save Changes</button>
+            </section>
+            
+            <section id="contact-editor" class="content-editor">
+                <h2>Contact Page Editor</h2>
                 <div class="editor-field">
-                    <label>Core Values</label>
-                    <div class="value-editor">
-                        <input type="text" class="editor-input" data-content="mission.values.0">
-                        <input type="text" class="editor-input" data-content="mission.values.1">
-                        <input type="text" class="editor-input" data-content="mission.values.2">
-                    </div>
+                    <label>Contact Email</label>
+                    <input type="email" class="editor-input" data-content="contact.email">
                 </div>
                 <button class="editor-save-btn">Save Changes</button>
             </section>
