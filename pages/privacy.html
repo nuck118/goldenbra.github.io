@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - GOLDENBRA</title>
+  <!-- Tailwind CSS & Custom Styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/wind.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <!-- Navbar (updated for pages folder) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create navigation structure
+      const header = document.createElement('header');
+      header.className = 'bg-gray-900 text-white py-4 shadow-md';
+      header.innerHTML = `
+        <div class="container mx-auto flex justify-between items-center px-6">
+          <a href="../index.html" class="text-2xl font-bold">GOLDENBRA</a>
+          <nav class="hidden md:flex">
+            <ul class="flex space-x-6">
+              ${createNavLinks()}
+              <li class="relative">
+                <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                  <i class="fas fa-lock"></i>
+                  <span>Admin</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
+          <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+          <ul class="text-center space-y-4">
+            ${createNavLinks()}
+            <li>
+              <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                <i class="fas fa-lock"></i>
+                <span>Admin Login</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      `;
+
+      // Insert header at the top of the body
+      document.body.insertBefore(header, document.body.firstChild);
+
+      // Select elements after insertion
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileClose = document.getElementById('mobile-nav-close');
+
+      // Mobile menu functionality
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileNav.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+
+      mobileClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+
+      // Close mobile nav when clicking outside it
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.classList.contains('hidden') &&
+            !mobileNav.contains(e.target) &&
+            !mobileToggle.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close mobile menu on clicking any nav link (allow navigation to occur)
+      const navLinks = mobileNav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(closeMobileMenu, 100);
+        });
+      });
+
+      function createNavLinks() {
+        return `
+          <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
+          <li><a href="mission.html" class="hover:text-blue-400">Mission</a></li>
+          <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
+          <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
+          <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
+          <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
+        `;
+      }
+
+      function closeMobileMenu() {
+        mobileNav.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+  </script>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="relative h-64 flex items-center justify-center text-white text-center" style="background: url('https://via.placeholder.com/1920x1080') center/cover;">
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="relative z-10 p-8">
+        <h1 class="text-4xl font-bold">Privacy Policy</h1>
+        <p class="text-lg mt-2">Your privacy is important to us</p>
+      </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="container mx-auto py-16">
+      <div class="content-card bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Our Commitment to Privacy</h2>
+        <p class="text-gray-600 mb-6">
+          At GOLDENBRA, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you visit our website or use our services.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2">1. Information We Collect</h3>
+        <p class="text-gray-600 mb-6">
+          We may collect the following types of information:
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>Personal Information: Name, email address, phone number, etc.</li>
+            <li>Usage Data: IP address, browser type, pages visited, etc.</li>
+            <li>Cookies: To enhance your browsing experience.</li>
+          </ul>
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2">2. How We Use Your Information</h3>
+        <p class="text-gray-600 mb-6">
+          We use your information to:
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>Provide and improve our services.</li>
+            <li>Respond to your inquiries and requests.</li>
+            <li>Send you updates and promotional materials (with your consent).</li>
+          </ul>
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2">3. Information Sharing</h3>
+        <p class="text-gray-600 mb-6">
+          We do not sell, trade, or otherwise transfer your personal information to outside parties unless we provide you with advance notice. This does not include trusted third parties who assist us in operating our website or conducting our business, as long as they agree to keep this information confidential.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2">4. Data Security</h3>
+        <p class="text-gray-600 mb-6">
+          We implement a variety of security measures to maintain the safety of your personal information. However, no method of transmission over the internet or electronic storage is 100% secure.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2">5. Your Rights</h3>
+        <p class="text-gray-600 mb-6">
+          You have the right to:
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>Access, update, or delete your personal information.</li>
+            <li>Opt-out of receiving promotional communications.</li>
+            <li>Request a copy of the data we hold about you.</li>
+          </ul>
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2">6. Changes to This Policy</h3>
+        <p class="text-gray-600 mb-6">
+          We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the effective date will be updated accordingly.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2">7. Contact Us</h3>
+        <p class="text-gray-600 mb-6">
+          If you have any questions about this Privacy Policy, please contact us at:
+          <br>
+          <strong>Email:</strong> info@goldenbra.com
+          <br>
+          <strong>Phone:</strong> +260 966 994 956
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <h4 class="text-lg font-semibold">Quick Links</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="mission.html" class="hover:underline">Our Mission</a></li>
+          <li><a href="services.html" class="hover:underline">Services</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Legal</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="#" class="hover:underline">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Connect</h4>
+        <div class="mt-2 space-x-4">
+          <a href="https://www.linkedin.com/company/goldenbra-investments-ltd/" class="text-blue-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
