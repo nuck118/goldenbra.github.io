@@ -4,22 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
     header.className = 'bg-gray-900 text-white py-4 shadow-md';
     header.innerHTML = `
         <div class="container mx-auto flex justify-between items-center px-6">
-            <a href="index.html" class="text-2xl font-bold">GOLDENBRA</a>
-            <nav class="hidden md:flex">
-                <ul class="flex space-x-6">
-                    ${createNavLinks()}
-                    <li class="relative">
-                        <a href="admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
-                            <i class="fas fa-lock"></i>
-                            <span>Admin</span>
-                        </a>
-                    </li>
-                </ul>
+            <h1 class="text-2xl font-bold">GOLDENBRA</h1>
+            <nav class="hidden md:flex space-x-6">
+                ${createNavLinks()}
+                <li class="relative">
+                    <a href="login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                        <i class="fas fa-lock"></i>
+                        <span>Admin</span>
+                    </a>
+                </li>
             </nav>
             <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
             <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
                 <i class="fas fa-times"></i>
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <ul class="text-center space-y-4">
                 ${createNavLinks()}
                 <li>
-                    <a href="admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                    <a href="admin/login.html" class="flex items-center space-x-2">
                         <i class="fas fa-lock"></i>
                         <span>Admin Login</span>
                     </a>
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     `;
 
-    // Insert header at the top of the body
     document.body.insertBefore(header, document.body.firstChild);
 
     // Select elements after insertion
@@ -45,22 +43,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileClose = document.getElementById('mobile-nav-close');
 
     // Mobile menu functionality
-    mobileToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent event bubbling
+    mobileToggle.addEventListener('click', () => {
         mobileNav.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
     });
 
-    mobileClose.addEventListener('click', (e) => {
-        e.stopPropagation();
+    mobileClose.addEventListener('click', () => {
         closeMobileMenu();
     });
 
-    // Close mobile nav when clicking outside of it
     document.addEventListener('click', (e) => {
-        if (!mobileNav.classList.contains('hidden') &&
-            !mobileNav.contains(e.target) &&
-            !mobileToggle.contains(e.target)) {
+        if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
             closeMobileMenu();
         }
     });
@@ -68,11 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function createNavLinks() {
         return `
             <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
-            <li><a href="pages/mission.html" class="hover:text-blue-400">Mission</a></li>
-            <li><a href="pages/profile.html" class="hover:text-blue-400">Profile</a></li>
-            <li><a href="pages/services.html" class="hover:text-blue-400">Services</a></li>
-            <li><a href="pages/details.html" class="hover:text-blue-400">Details</a></li>
-            <li><a href="pages/contact.html" class="hover:text-blue-400">Contact</a></li>
+            <li><a href="pagesmission.html" class="hover:text-blue-400">Mission</a></li>
+            <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
+            <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
+            <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
+            <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
         `;
     }
 
