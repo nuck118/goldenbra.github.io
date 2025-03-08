@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
             <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
             <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
+            <li><a href="admin/login.html" class="hover:text-blue-400">Admin</a></li>
         `;
     }
 
