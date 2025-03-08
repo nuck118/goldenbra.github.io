@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     header.className = 'bg-gray-900 text-white py-4 shadow-md';
     header.innerHTML = `
         <div class="container mx-auto flex justify-between items-center px-6">
-            <h1 href="index.html" class="text-2xl font-bold">GOLDENBRA</h1>
+            <a href="index.html" class="text-2xl font-bold">GOLDENBRA</a>
             <nav class="hidden md:flex">
                 <ul class="flex space-x-6">
                     ${createNavLinks()}
@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <li><a href="pages/services.html" class="hover:text-blue-400">Services</a></li>
             <li><a href="pages/details.html" class="hover:text-blue-400">Details</a></li>
             <li><a href="pages/contact.html" class="hover:text-blue-400">Contact</a></li>
-            <li><a href="admin/login.html" class="hover:text-blue-400">Admin</a></li>
         `;
     }
 
