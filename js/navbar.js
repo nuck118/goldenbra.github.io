@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createNavLinks() {
         return `
             <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
-            <li><a href="../pages/mission.html" class="hover:text-blue-400">Mission</a></li>
+            <li><a href="nuck118/goldenbra.github.io/pages/mission.html" class="hover:text-blue-400">Mission</a></li>
             <li><a href="../pages/profile.html" class="hover:text-blue-400">Profile</a></li>
             <li><a href="../pages/services.html" class="hover:text-blue-400">Services</a></li>
             <li><a href="../pages/details.html" class="hover:text-blue-400">Details</a></li>
