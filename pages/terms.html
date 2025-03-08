@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service - GOLDENBRA</title>
+  <!-- Tailwind CSS & Custom Styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/wind.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <!-- Navbar (updated for pages folder) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create navigation structure
+      const header = document.createElement('header');
+      header.className = 'bg-gray-900 text-white py-4 shadow-md';
+      header.innerHTML = `
+        <div class="container mx-auto flex justify-between items-center px-6">
+          <a href="../index.html" class="text-2xl font-bold">GOLDENBRA</a>
+          <nav class="hidden md:flex">
+            <ul class="flex space-x-6">
+              ${createNavLinks()}
+              <li class="relative">
+                <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                  <i class="fas fa-lock"></i>
+                  <span>Admin</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
+          <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+          <ul class="text-center space-y-4">
+            ${createNavLinks()}
+            <li>
+              <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                <i class="fas fa-lock"></i>
+                <span>Admin Login</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      `;
+
+      // Insert header at the top of the body
+      document.body.insertBefore(header, document.body.firstChild);
+
+      // Select elements after insertion
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileClose = document.getElementById('mobile-nav-close');
+
+      // Mobile menu functionality
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileNav.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+
+      mobileClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+
+      // Close mobile nav when clicking outside it
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.classList.contains('hidden') &&
+            !mobileNav.contains(e.target) &&
+            !mobileToggle.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close mobile menu on clicking any nav link (allow navigation to occur)
+      const navLinks = mobileNav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(closeMobileMenu, 100);
+        });
+      });
+
+      function createNavLinks() {
+        return `
+          <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
+          <li><a href="mission.html" class="hover:text-blue-400">Mission</a></li>
+          <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
+          <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
+          <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
+          <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
+        `;
+      }
+
+      function closeMobileMenu() {
+        mobileNav.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+  </script>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="relative h-64 flex items-center justify-center text-white text-center" style="background: url('https://bhavani.com/assets/images/bhavani-privacy-policy-banner.jpg') center/cover;">
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="relative z-10 p-8">
+        <h1 class="text-4xl font-bold">Terms of Service</h1>
+        <p class="text-lg mt-2">Please read these terms carefully before using our services</p>
+      </div>
+    </section>
+
+    <!-- Terms of Service Content -->
+    <section class="container mx-auto py-16">
+      <div class="content-card bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Terms of Service</h2>
+        <p class="text-gray-600 mb-6">
+          Effective Date: <span id="current-date"></span>
+        </p>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">1. Acceptance of Terms</h3>
+          <p class="text-gray-600 mb-4">
+            By accessing or using the website <a href="https://www.goldenbra.com" class="text-blue-600 hover:underline">https://www.goldenbra.com</a> (the "Site"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you must not use the Site.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">2. Use of the Site</h3>
+          <p class="text-gray-600 mb-4">
+            You agree to use the Site only for lawful purposes and in accordance with these Terms. You must not:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>Use the Site in any way that violates applicable laws or regulations.</li>
+            <li>Engage in any activity that interferes with or disrupts the Site.</li>
+            <li>Attempt to gain unauthorized access to the Site or its related systems.</li>
+          </ul>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">3. Intellectual Property</h3>
+          <p class="text-gray-600 mb-4">
+            All content on the Site, including text, graphics, logos, and images, is the property of GOLDENBRA INVESTMENT LTD or its licensors and is protected by intellectual property laws. You may not use, reproduce, or distribute any content without prior written permission.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">4. User Accounts</h3>
+          <p class="text-gray-600 mb-4">
+            If you create an account on the Site, you are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must notify us immediately of any unauthorized use of your account.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">5. Limitation of Liability</h3>
+          <p class="text-gray-600 mb-4">
+            To the fullest extent permitted by law, GOLDENBRA INVESTMENT LTD shall not be liable for any indirect, incidental, or consequential damages arising out of or related to your use of the Site.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">6. Indemnification</h3>
+          <p class="text-gray-600 mb-4">
+            You agree to indemnify and hold harmless GOLDENBRA INVESTMENT LTD and its affiliates from any claims, damages, or expenses arising out of your use of the Site or violation of these Terms.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">7. Termination</h3>
+          <p class="text-gray-600 mb-4">
+            We reserve the right to terminate or suspend your access to the Site at any time, without notice, for any reason, including violation of these Terms.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">8. Governing Law</h3>
+          <p class="text-gray-600 mb-4">
+            These Terms are governed by and construed in accordance with the laws of Zambia. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts of Zambia.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">9. Changes to These Terms</h3>
+          <p class="text-gray-600 mb-4">
+            We may update these Terms from time to time. We will notify you of any changes by posting the new Terms on this page. Your continued use of the Site after any changes constitutes acceptance of the updated Terms.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">10. Contact Us</h3>
+          <p class="text-gray-600 mb-4">
+            If you have any questions about these Terms, please contact us at:
+            <br>
+            <strong>Email:</strong> info@goldenbra.com
+            <br>
+            <strong>Phone:</strong> +260 966 994 956
+            <br>
+            <strong>Address:</strong> Plot 48 Weighbridge Area, Solwezi, Zambia
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <h4 class="text-lg font-semibold">Quick Links</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="mission.html" class="hover:underline">Our Mission</a></li>
+          <li><a href="services.html" class="hover:underline">Services</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Legal</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="#" class="hover:underline">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Connect</h4>
+        <div class="mt-2 space-x-4">
+          <a href="https://www.linkedin.com/company/goldenbra-investments-ltd/" class="text-blue-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+    </div>
+  </footer>
+
+  <script>
+    // Update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Update effective date
+    const currentDate = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    document.getElementById('current-date').textContent = currentDate;
+  </script>
+</body>
+</html>
