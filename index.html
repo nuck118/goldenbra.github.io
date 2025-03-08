@@ -10,62 +10,94 @@
 </head>
 <body class="bg-gray-100 text-gray-900">
   <!-- Navbar -->
-  <nav class="bg-gray-900 text-white py-4 shadow-md relative">
-    <div class="container mx-auto flex justify-between items-center px-6">
-      <h1 class="text-2xl font-bold">GOLDENBRA</h1>
-      <ul class="hidden md:flex space-x-6">
-        <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
-        <li><a href="mission.html" class="hover:text-blue-400">Mission</a></li>
-        <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
-        <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
-        <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
-        <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
-        <li class="relative">
-          <a href="login.html" class="flex items-center space-x-2 hover:text-blue-400">
-            <i class="fas fa-lock"></i>
-            <span>Admin</span>
-          </a>
-        </li>
-      </ul>
-      <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-    <!-- Mobile Navigation Menu -->
-    <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
-      <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
-        <i class="fas fa-times"></i>
-      </button>
-      <ul class="text-center space-y-4">
-        <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
-        <li><a href="pages/mission.html" class="hover:text-blue-400">Mission</a></li>
-        <li><a href="pages/profile.html" class="hover:text-blue-400">Profile</a></li>
-        <li><a href="pages/services.html" class="hover:text-blue-400">Services</a></li>
-        <li><a href="pages/details.html" class="hover:text-blue-400">Details</a></li>
-        <li><a href="pages/contact.html" class="hover:text-blue-400">Contact</a></li>
-        <li><a href="admin/login.html" class="hover:text-blue-400">Admin</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Mobile menu toggle functionality -->
   <script>
-    const mobileToggle = document.getElementById('mobile-menu-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
-    const mobileClose = document.getElementById('mobile-nav-close');
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create navigation structure
+      const header = document.createElement('header');
+      header.className = 'bg-gray-900 text-white py-4 shadow-md';
+      header.innerHTML = `
+        <div class="container mx-auto flex justify-between items-center px-6">
+          <a href="index.html" class="text-2xl font-bold">GOLDENBRA</a>
+          <nav class="hidden md:flex">
+            <ul class="flex space-x-6">
+              ${createNavLinks()}
+              <li class="relative">
+                <a href="admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                  <i class="fas fa-lock"></i>
+                  <span>Admin</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
+          <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+          <ul class="text-center space-y-4">
+            ${createNavLinks()}
+            <li>
+              <a href="admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                <i class="fas fa-lock"></i>
+                <span>Admin Login</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      `;
 
-    mobileToggle.addEventListener('click', function () {
-      mobileNav.classList.remove('hidden');
-      document.body.classList.add('overflow-hidden');
-    });
+      // Insert header at the top of the body
+      document.body.insertBefore(header, document.body.firstChild);
 
-    mobileClose.addEventListener('click', function () {
-      mobileNav.classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
-    });
+      // Select elements after insertion
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileClose = document.getElementById('mobile-nav-close');
 
-    document.addEventListener('click', function (e) {
-      if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
+      // Mobile menu functionality
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileNav.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+
+      mobileClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+
+      // Close mobile nav when clicking outside it
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.classList.contains('hidden') &&
+            !mobileNav.contains(e.target) &&
+            !mobileToggle.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close mobile menu on clicking any nav link
+      const navLinks = mobileNav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(closeMobileMenu, 100);
+        });
+      });
+
+      function createNavLinks() {
+        return `
+          <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+          <li><a href="pages/mission.html" class="hover:text-blue-400">Mission</a></li>
+          <li><a href="pages/profile.html" class="hover:text-blue-400">Profile</a></li>
+          <li><a href="pages/services.html" class="hover:text-blue-400">Services</a></li>
+          <li><a href="pages/details.html" class="hover:text-blue-400">Details</a></li>
+          <li><a href="pages/contact.html" class="hover:text-blue-400">Contact</a></li>
+        `;
+      }
+
+      function closeMobileMenu() {
         mobileNav.classList.add('hidden');
         document.body.classList.remove('overflow-hidden');
       }
@@ -75,33 +107,15 @@
   <!-- Main Content -->
   <main class="main-content">
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center text-white text-center">
-      <img src="https://globzon.travel.pl/blog/wp-content/uploads/2024/04/Zambia-1.jpg" alt="Zambia Background" class="absolute inset-0 w-full h-full object-cover">
+    <section class="relative h-screen flex items-center justify-center text-white text-center" style="background: url('path-to-your-image.jpg') center/cover;">
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
       <div class="relative z-10 p-8">
         <h1 class="text-4xl font-bold">Building Zambia's Future</h1>
         <p class="text-lg mt-2">Quality construction solutions since 2015</p>
         <a href="pages/services.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Explore Services</a>
       </div>
     </section>
-
-    <!-- Highlights Section -->
-    <section class="container mx-auto py-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <i class="fas fa-hard-hat text-3xl text-blue-600"></i>
-        <h3 class="text-xl font-semibold mt-4">150+ Projects Completed</h3>
-        <p class="text-gray-600">Successful constructions nationwide</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <i class="fas fa-users text-3xl text-blue-600"></i>
-        <h3 class="text-xl font-semibold mt-4">98% Client Satisfaction</h3>
-        <p class="text-gray-600">Proven track record of excellence</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <i class="fas fa-award text-3xl text-blue-600"></i>
-        <h3 class="text-xl font-semibold mt-4">Certified Professionals</h3>
-        <p class="text-gray-600">Licensed & experienced team</p>
-      </div>
-    </section>
+    <!-- Additional index content can go here -->
   </main>
 
   <!-- Footer -->
@@ -141,6 +155,7 @@
   </script>
 </body>
 </html>
+
 
 
 
