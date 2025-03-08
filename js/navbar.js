@@ -5,20 +5,21 @@ document.addEventListener('DOMContentLoaded', function() {
     header.innerHTML = `
         <div class="container mx-auto flex justify-between items-center px-6">
             <h1 class="text-2xl font-bold">GOLDENBRA</h1>
-            <nav class="hidden md:flex space-x-6">
-                ${createNavLinks()}
-                <li class="relative">
-                    <a href="login.html" class="flex items-center space-x-2 hover:text-blue-400">
-                        <i class="fas fa-lock"></i>
-                        <span>Admin</span>
-                    </a>
-                </li>
+            <nav class="hidden md:flex">
+                <ul class="flex space-x-6">
+                    ${createNavLinks()}
+                    <li class="relative">
+                        <a href="login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                            <i class="fas fa-lock"></i>
+                            <span>Admin</span>
+                        </a>
+                    </li>
+                </ul>
             </nav>
             <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        
         <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
             <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
                 <i class="fas fa-times"></i>
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <ul class="text-center space-y-4">
                 ${createNavLinks()}
                 <li>
-                    <a href="admin/login.html" class="flex items-center space-x-2">
+                    <a href="admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
                         <i class="fas fa-lock"></i>
                         <span>Admin Login</span>
                     </a>
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     `;
 
+    // Insert header at the top of the body
     document.body.insertBefore(header, document.body.firstChild);
 
     // Select elements after insertion
