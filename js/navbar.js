@@ -45,17 +45,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileClose = document.getElementById('mobile-nav-close');
 
     // Mobile menu functionality
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent event bubbling
         mobileNav.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
     });
 
-    mobileClose.addEventListener('click', () => {
+    mobileClose.addEventListener('click', (e) => {
+        e.stopPropagation();
         closeMobileMenu();
     });
 
+    // Close mobile nav when clicking outside of it
     document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
+        if (!mobileNav.classList.contains('hidden') &&
+            !mobileNav.contains(e.target) &&
+            !mobileToggle.contains(e.target)) {
             closeMobileMenu();
         }
     });
