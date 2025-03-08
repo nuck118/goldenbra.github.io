@@ -1,0 +1,22 @@
+/* wind.css - Custom Tailwind Overrides */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.hero-overlay {
+    @apply bg-black bg-opacity-50 absolute inset-0;
+}
+
+.btn {
+    @apply bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition;
+}
+
+.footer a:hover {
+    @apply underline;
+}
+
+.social-links a {
+    @apply text-blue-400 text-2xl mx-2;
+}

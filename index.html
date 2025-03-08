@@ -4,6 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOLDENBRA - Professional Construction Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/wind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <script src="js/navbar.js"></script>
+
+    <main class="main-content">
+        <section class="relative bg-cover bg-center h-screen flex items-center justify-center text-white text-center" style="background-image: url('path-to-your-image.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="relative z-10 p-8">
+                <h1 class="text-4xl font-bold">Building Zambia's Future</h1>
+                <p class="text-lg mt-2">Quality construction solutions since 2015</p>
+                <a href="pages/services.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Explore Services</a>
+            </div>
+        </section>
+
+        <section class="container mx-auto py-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <i class="fas fa-hard-hat text-3xl text-blue-600"></i>
+                <h3 class="text-xl font-semibold mt-4">150+ Projects Completed</h3>
+                <p class="text-gray-600">Successful constructions nationwide</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <i class="fas fa-users text-3xl text-blue-600"></i>
+                <h3 class="text-xl font-semibold mt-4">98% Client Satisfaction</h3>
+                <p class="text-gray-600">Proven track record of excellence</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <i class="fas fa-award text-3xl text-blue-600"></i>
+                <h3 class="text-xl font-semibold mt-4">Certified Professionals</h3>
+                <p class="text-gray-600">Licensed & experienced team</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h4 class="text-lg font-semibold">Quick Links</h4>
+                <ul class="mt-2 space-y-2">
+                    <li><a href="pages/mission.html" class="hover:underline">Our Mission</a></li>
+                    <li><a href="pages/services.html" class="hover:underline">Services</a></li>
+                    <li><a href="pages/contact.html" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold">Legal</h4>
+                <ul class="mt-2 space-y-2">
+                    <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:underline">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold">Connect</h4>
+                <div class="mt-2 space-x-4">
+                    <a href="https://www.linkedin.com/company/goldenbra-investments-ltd/" class="text-blue-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDENBRA - Professional Construction Solutions</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
