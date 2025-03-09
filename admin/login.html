@@ -1,218 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - GOLDENBRA</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Login-specific styles */
-        .login-container {
-            display: flex;
-            min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-            background: #ffffff;
-        }
-
-        .login-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .login-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .login-logo {
-            width: 120px;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-            font-weight: 500;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #ffffffd3;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .input-field:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-
-        .password-toggle {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #666;
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .login-btn:hover {
-            background: var(--secondary-color);
-        }
-
-        .login-footer {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .login-footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .login-footer a:hover {
-            text-decoration: underline;
-        }
-
-        .security-notice {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 1.5rem;
-            text-align: center;
-        }
-
-        .return-home {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .return-home a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .return-home a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login - GOLDENBRA</title>
+  <!-- Tailwind CSS & Custom Styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/wind.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body>
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <img src="https://github.com/nuck118/goldenbra.github.io/blob/main/images/goldenbra.png?raw=true" alt="GOLDENBRA Logo" class="login-logo">
-                <h2>Admin Portal</h2>
-                <p>Secure access to management panel</p>
-            </div>
-
-            <form id="adminLoginForm" class="login-form">
-                <div class="form-group">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" 
-                           id="username" 
-                           class="input-field" 
-                           placeholder="Enter admin username"
-                           required
-                           autocomplete="username">
-                    <i class="fas fa-user input-icon"></i>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" 
-                           id="password" 
-                           class="input-field" 
-                           placeholder="Enter password"
-                           required
-                           autocomplete="current-password">
-                    <i class="fas fa-eye password-toggle" id="togglePassword"></i>
-                </div>
-
-                <div class="form-group">
-                    <label class="security-check">
-                        <input type="checkbox" id="rememberMe">
-                        Remember this device
-                    </label>
-                </div>
-
-                <button type="submit" class="login-btn">Sign In</button>
-
-                <div class="login-footer">
-                    <a href="../pages/contact.html">Forgot Password?</a>
-                </div>
-
-                <div class="return-home">
-                    <a href="../index.html">← Return to Home</a>
-                </div>
-
-                <div class="security-notice">
-                    <i class="fas fa-shield-alt"></i>
-                    <p>All login attempts are monitored and recorded</p>
-                </div>
-            </form>
+<body class="bg-gray-100 text-gray-900">
+  <!-- Navbar (updated for pages folder) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create navigation structure
+      const header = document.createElement('header');
+      header.className = 'bg-gray-900 text-white py-4 shadow-md fixed w-full z-50';
+      header.innerHTML = `
+        <div class="container mx-auto flex justify-between items-center px-6">
+          <a href="../index.html" class="text-2xl font-bold">GOLDENBRA</a>
+          <nav class="hidden md:flex">
+            <ul class="flex space-x-6">
+              ${createNavLinks()}
+              <li class="relative">
+                <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                  <i class="fas fa-lock"></i>
+                  <span>Admin</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
+        <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
+          <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+          <ul class="text-center space-y-4">
+            ${createNavLinks()}
+            <li>
+              <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                <i class="fas fa-lock"></i>
+                <span>Admin Login</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      `;
+
+      // Insert header at the top of the body
+      document.body.insertBefore(header, document.body.firstChild);
+
+      // Select elements after insertion
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileClose = document.getElementById('mobile-nav-close');
+
+      // Mobile menu functionality
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileNav.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+
+      mobileClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+
+      // Close mobile nav when clicking outside it
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.classList.contains('hidden') &&
+            !mobileNav.contains(e.target) &&
+            !mobileToggle.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close mobile menu on clicking any nav link (allow navigation to occur)
+      const navLinks = mobileNav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(closeMobileMenu, 100);
+        });
+      });
+
+      function createNavLinks() {
+        return `
+          <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
+          <li><a href="mission.html" class="hover:text-blue-400">Mission</a></li>
+          <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
+          <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
+          <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
+          <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
+        `;
+      }
+
+      function closeMobileMenu() {
+        mobileNav.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+  </script>
+
+  <!-- Login Container -->
+  <div class="min-h-screen flex items-center justify-center bg-gray-100 py-20">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md transform transition-transform hover:scale-105">
+      <div class="text-center mb-8">
+        <img src="https://github.com/nuck118/goldenbra.github.io/blob/main/images/goldenbra.png?raw=true" alt="GOLDENBRA Logo" class="w-32 mx-auto mb-4">
+        <h2 class="text-2xl font-bold">Admin Portal</h2>
+        <p class="text-gray-600">Secure access to management panel</p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="adminLoginForm" class="space-y-6">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <div class="mt-1 relative">
+            <input type="text" 
+                   id="username" 
+                   name="username" 
+                   placeholder="Enter admin username" 
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   required>
+            <i class="fas fa-user absolute right-3 top-3 text-gray-400"></i>
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <div class="mt-1 relative">
+            <input type="password" 
+                   id="password" 
+                   name="password" 
+                   placeholder="Enter password" 
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   required>
+            <i class="fas fa-eye absolute right-3 top-3 text-gray-400 cursor-pointer" id="togglePassword"></i>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input type="checkbox" id="rememberMe" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+            <label for="rememberMe" class="ml-2 block text-sm text-gray-900">Remember this device</label>
+          </div>
+          <a href="../pages/contact.html" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all duration-300">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Footer Links -->
+      <div class="mt-6 text-center">
+        <a href="../index.html" class="text-sm text-blue-600 hover:underline">← Return to Home</a>
+      </div>
+
+      <!-- Security Notice -->
+      <div class="mt-6 text-center text-sm text-gray-500">
+        <i class="fas fa-shield-alt"></i>
+        <p>All login attempts are monitored and recorded</p>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Password visibility toggle
-        const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#password');
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <h4 class="text-lg font-semibold">Quick Links</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="mission.html" class="hover:underline">Our Mission</a></li>
+          <li><a href="services.html" class="hover:underline">Services</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Legal</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="#" class="hover:underline">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Connect</h4>
+        <div class="mt-2 space-x-4">
+          <a href="https://www.linkedin.com/company/goldenbra-investments-ltd/" class="text-blue-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+    </div>
+  </footer>
 
-        togglePassword.addEventListener('click', function (e) {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash');
-        });
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hidden">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-        // Form validation
-        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Add actual authentication logic here
-            if(username === 'admin' && password === 'securepassword') {
-                localStorage.setItem('authToken', 'authenticated');
-                window.location.href = 'dashboard.html';
-            } else {
-                alert('Invalid credentials. Please try again.');
-            }
-        });
-    </script>
+  <script>
+    // Update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('hidden');
+      } else {
+        backToTopButton.classList.add('hidden');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+
+    // Password visibility toggle
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', function (e) {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      this.classList.toggle('fa-eye-slash');
+    });
+
+    // Form validation
+    document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      // Add actual authentication logic here
+      if(username === 'admin' && password === 'securepassword') {
+        localStorage.setItem('authToken', 'authenticated');
+        window.location.href = 'dashboard.html';
+      } else {
+        alert('Invalid credentials. Please try again.');
+      }
+    });
+  </script>
 </body>
 </html>
