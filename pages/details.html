@@ -1,62 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Details - GOLDENBRA</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Details - GOLDENBRA</title>
+  <!-- Tailwind CSS & Custom Styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/wind.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-<body>
-    <script src="../js/navbar.js"></script>
-
-    <main class="main-content">
-        <section class="hero-section details-hero">
-            <div class="hero-overlay">
-                <div class="container">
-                    <h1>Company Details</h1>
-                    <p>Transparency and professionalism at every step</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="details-content container">
-            <div class="content-card">
-                <h2>Our Information</h2>
-                <div class="details-grid">
-                    <div class="detail-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>Plot 48 Weighbridge Area, Solwezi, Zambia</p>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-phone"></i>
-                        <h3>Contact</h3>
-                        <p>+260 966 994 956</p>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>info@goldenbra.com</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Same footer as index.html -->
-            </div>
-            <div class="copyright">
-                <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
-            </div>
+<body class="bg-gray-100 text-gray-900">
+  <!-- Navbar (updated for pages folder) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create navigation structure
+      const header = document.createElement('header');
+      header.className = 'bg-gray-900 text-white py-4 shadow-md fixed w-full z-50';
+      header.innerHTML = `
+        <div class="container mx-auto flex justify-between items-center px-6">
+          <a href="../index.html" class="text-2xl font-bold">GOLDENBRA</a>
+          <nav class="hidden md:flex">
+            <ul class="flex space-x-6">
+              ${createNavLinks()}
+              <li class="relative">
+                <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                  <i class="fas fa-lock"></i>
+                  <span>Admin</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
-    </footer>
+        <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
+          <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+          <ul class="text-center space-y-4">
+            ${createNavLinks()}
+            <li>
+              <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                <i class="fas fa-lock"></i>
+                <span>Admin Login</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      `;
 
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+      // Insert header at the top of the body
+      document.body.insertBefore(header, document.body.firstChild);
+
+      // Select elements after insertion
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileClose = document.getElementById('mobile-nav-close');
+
+      // Mobile menu functionality
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileNav.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+
+      mobileClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+
+      // Close mobile nav when clicking outside it
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.classList.contains('hidden') &&
+            !mobileNav.contains(e.target) &&
+            !mobileToggle.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close mobile menu on clicking any nav link (allow navigation to occur)
+      const navLinks = mobileNav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(closeMobileMenu, 100);
+        });
+      });
+
+      function createNavLinks() {
+        return `
+          <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
+          <li><a href="mission.html" class="hover:text-blue-400">Mission</a></li>
+          <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
+          <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
+          <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
+          <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
+        `;
+      }
+
+      function closeMobileMenu() {
+        mobileNav.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+  </script>
+
+  <!-- Main Content -->
+  <main class="main-content pt-20"> <!-- Added padding-top to account for fixed navbar -->
+    <!-- Hero Section -->
+    <section class="relative h-64 flex items-center justify-center text-white text-center" style="background: url('https://via.placeholder.com/1920x1080') center/cover;">
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="relative z-10 p-8">
+        <h1 class="text-4xl font-bold">Company Details</h1>
+        <p class="text-lg mt-2">Transparency and professionalism at every step</p>
+      </div>
+    </section>
+
+    <!-- Details Content -->
+    <section class="container mx-auto py-16">
+      <div class="content-card bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-6">Our Information</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Location -->
+          <div class="detail-item text-center">
+            <i class="fas fa-map-marker-alt text-blue-500 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Location</h3>
+            <p class="text-gray-600">Plot 48 Weighbridge Area, Solwezi, Zambia</p>
+          </div>
+
+          <!-- Contact -->
+          <div class="detail-item text-center">
+            <i class="fas fa-phone text-blue-500 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Contact</h3>
+            <p class="text-gray-600">+260 966 994 956</p>
+          </div>
+
+          <!-- Email -->
+          <div class="detail-item text-center">
+            <i class="fas fa-envelope text-blue-500 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Email</h3>
+            <p class="text-gray-600">info@goldenbra.com</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <h4 class="text-lg font-semibold">Quick Links</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="mission.html" class="hover:underline">Our Mission</a></li>
+          <li><a href="services.html" class="hover:underline">Services</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Legal</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="#" class="hover:underline">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Connect</h4>
+        <div class="mt-2 space-x-4">
+          <a href="https://www.linkedin.com/company/goldenbra-investments-ltd/" class="text-blue-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hidden">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('hidden');
+      } else {
+        backToTopButton.classList.add('hidden');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth',
+        });
+      });
+    });
+  </script>
 </body>
 </html>
