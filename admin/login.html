@@ -6,226 +6,73 @@
   <title>Admin Login - GOLDENBRA</title>
   <!-- Tailwind CSS & Custom Styles -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../css/wind.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-  <!-- Navbar (updated for pages folder) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Create navigation structure
-      const header = document.createElement('header');
-      header.className = 'bg-gray-900 text-white py-4 shadow-md fixed w-full z-50';
-      header.innerHTML = `
-        <div class="container mx-auto flex justify-between items-center px-6">
-          <a href="../index.html" class="text-2xl font-bold">GOLDENBRA</a>
-          <nav class="hidden md:flex">
-            <ul class="flex space-x-6">
-              ${createNavLinks()}
-              <li class="relative">
-                <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
-                  <i class="fas fa-lock"></i>
-                  <span>Admin</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
-            <i class="fas fa-bars"></i>
-          </button>
-        </div>
-        <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
-          <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
-            <i class="fas fa-times"></i>
-          </button>
-          <ul class="text-center space-y-4">
-            ${createNavLinks()}
-            <li>
-              <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
-                <i class="fas fa-lock"></i>
-                <span>Admin Login</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      `;
-
-      // Insert header at the top of the body
-      document.body.insertBefore(header, document.body.firstChild);
-
-      // Select elements after insertion
-      const mobileToggle = document.getElementById('mobile-menu-toggle');
-      const mobileNav = document.getElementById('mobile-nav');
-      const mobileClose = document.getElementById('mobile-nav-close');
-
-      // Mobile menu functionality
-      mobileToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        mobileNav.classList.remove('hidden');
-        document.body.classList.add('overflow-hidden');
-      });
-
-      mobileClose.addEventListener('click', (e) => {
-        e.stopPropagation();
-        closeMobileMenu();
-      });
-
-      // Close mobile nav when clicking outside it
-      document.addEventListener('click', (e) => {
-        if (!mobileNav.classList.contains('hidden') &&
-            !mobileNav.contains(e.target) &&
-            !mobileToggle.contains(e.target)) {
-          closeMobileMenu();
-        }
-      });
-
-      // Close mobile menu on clicking any nav link (allow navigation to occur)
-      const navLinks = mobileNav.querySelectorAll('a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          setTimeout(closeMobileMenu, 100);
-        });
-      });
-
-      function createNavLinks() {
-        return `
-          <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
-          <li><a href="mission.html" class="hover:text-blue-400">Mission</a></li>
-          <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
-          <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
-          <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
-          <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
-        `;
-      }
-
-      function closeMobileMenu() {
-        mobileNav.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
-      }
-    });
-  </script>
-
+<body>
   <!-- Login Container -->
-  <div class="min-h-screen flex items-center justify-center bg-gray-100 py-20">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md transform transition-transform hover:scale-105">
-      <div class="text-center mb-8">
-        <img src="https://github.com/nuck118/goldenbra.github.io/blob/main/images/goldenbra.png?raw=true" alt="GOLDENBRA Logo" class="w-32 mx-auto mb-4">
-        <h2 class="text-2xl font-bold">Admin Portal</h2>
-        <p class="text-gray-600">Secure access to management panel</p>
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md transform transition-transform hover:scale-105">
+    <div class="text-center mb-8">
+      <img src="https://github.com/nuck118/goldenbra.github.io/blob/main/images/goldenbra.png?raw=true" alt="GOLDENBRA Logo" class="w-32 mx-auto mb-4">
+      <h2 class="text-2xl font-bold">Admin Portal</h2>
+      <p class="text-gray-600">Secure access to management panel</p>
+    </div>
+
+    <!-- Login Form -->
+    <form id="adminLoginForm" class="space-y-6">
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <div class="mt-1 relative">
+          <input type="text" 
+                 id="username" 
+                 name="username" 
+                 placeholder="Enter admin username" 
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                 required>
+          <i class="fas fa-user absolute right-3 top-3 text-gray-400"></i>
+        </div>
       </div>
 
-      <!-- Login Form -->
-      <form id="adminLoginForm" class="space-y-6">
-        <div>
-          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-          <div class="mt-1 relative">
-            <input type="text" 
-                   id="username" 
-                   name="username" 
-                   placeholder="Enter admin username" 
-                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                   required>
-            <i class="fas fa-user absolute right-3 top-3 text-gray-400"></i>
-          </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <div class="mt-1 relative">
+          <input type="password" 
+                 id="password" 
+                 name="password" 
+                 placeholder="Enter password" 
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                 required>
+          <i class="fas fa-eye absolute right-3 top-3 text-gray-400 cursor-pointer" id="togglePassword"></i>
         </div>
-
-        <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-          <div class="mt-1 relative">
-            <input type="password" 
-                   id="password" 
-                   name="password" 
-                   placeholder="Enter password" 
-                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                   required>
-            <i class="fas fa-eye absolute right-3 top-3 text-gray-400 cursor-pointer" id="togglePassword"></i>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input type="checkbox" id="rememberMe" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-            <label for="rememberMe" class="ml-2 block text-sm text-gray-900">Remember this device</label>
-          </div>
-          <a href="../pages/contact.html" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
-        </div>
-
-        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all duration-300">
-          Sign In
-        </button>
-      </form>
-
-      <!-- Footer Links -->
-      <div class="mt-6 text-center">
-        <a href="../index.html" class="text-sm text-blue-600 hover:underline">← Return to Home</a>
       </div>
 
-      <!-- Security Notice -->
-      <div class="mt-6 text-center text-sm text-gray-500">
-        <i class="fas fa-shield-alt"></i>
-        <p>All login attempts are monitored and recorded</p>
+      <div class="flex items-center">
+        <input type="checkbox" id="rememberMe" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+        <label for="rememberMe" class="ml-2 block text-sm text-gray-900">Remember this device</label>
       </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all duration-300">
+        Sign In
+      </button>
+    </form>
+
+    <!-- Security Notice -->
+    <div class="mt-6 text-center text-sm text-gray-500">
+      <i class="fas fa-shield-alt"></i>
+      <p>All login attempts are monitored and recorded</p>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-10">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-      <div>
-        <h4 class="text-lg font-semibold">Quick Links</h4>
-        <ul class="mt-2 space-y-2">
-          <li><a href="pages/mission.html" class="hover:underline">Our Mission</a></li>
-          <li><a href="pages/services.html" class="hover:underline">Services</a></li>
-          <li><a href="pages/contact.html" class="hover:underline">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-lg font-semibold">Legal</h4>
-        <ul class="mt-2 space-y-2">
-          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-          <li><a href="#" class="hover:underline">Terms of Service</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-lg font-semibold">Connect</h4>
-        <div class="mt-2 space-x-4">
-          <a href="https://www.linkedin.com/company/goldenbra-investments-ltd/" class="text-blue-400 text-2xl"><i class="fab fa-linkedin"></i></a>
-          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="text-center mt-6">
-      <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
-    </div>
-  </footer>
-
-  <!-- Back to Top Button -->
-  <button id="back-to-top" class="fixed bottom-8 right-8 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hidden">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
   <script>
-    // Update copyright year
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-
-    // Back to Top Button
-    const backToTopButton = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopButton.classList.remove('hidden');
-      } else {
-        backToTopButton.classList.add('hidden');
-      }
-    });
-
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    });
-
     // Password visibility toggle
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#password');
