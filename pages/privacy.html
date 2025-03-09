@@ -1,182 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Mission - GOLDENBRA</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - GOLDENBRA</title>
+  <!-- Tailwind CSS & Custom Styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/wind.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-<body>
-    <!-- Navbar -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create navigation structure
-            const header = document.createElement('header');
-            header.className = 'bg-gray-900 text-white py-4 shadow-md';
-            header.innerHTML = `
-                <div class="container mx-auto flex justify-between items-center px-6">
-                    <a href="../index.html" class="text-2xl font-bold">GOLDENBRA</a>
-                    <nav class="hidden md:flex">
-                        <ul class="flex space-x-6">
-                            ${createNavLinks()}
-                            <li class="relative">
-                                <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
-                                    <i class="fas fa-lock"></i>
-                                    <span>Admin</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-                <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden z-50">
-                    <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    <ul class="text-center space-y-4">
-                        ${createNavLinks()}
-                        <li>
-                            <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
-                                <i class="fas fa-lock"></i>
-                                <span>Admin Login</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            `;
-
-            // Insert header at the top of the body
-            document.body.insertBefore(header, document.body.firstChild);
-
-            // Select elements after insertion
-            const mobileToggle = document.getElementById('mobile-menu-toggle');
-            const mobileNav = document.getElementById('mobile-nav');
-            const mobileClose = document.getElementById('mobile-nav-close');
-
-            // Mobile menu functionality
-            mobileToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                mobileNav.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
-            });
-
-            mobileClose.addEventListener('click', (e) => {
-                e.stopPropagation();
-                closeMobileMenu();
-            });
-
-            // Close mobile nav when clicking outside it
-            document.addEventListener('click', (e) => {
-                if (!mobileNav.classList.contains('hidden') &&
-                    !mobileNav.contains(e.target) &&
-                    !mobileToggle.contains(e.target)) {
-                    closeMobileMenu();
-                }
-            });
-
-            // Close mobile menu on clicking any nav link (allow navigation to occur)
-            const navLinks = mobileNav.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    setTimeout(closeMobileMenu, 100);
-                });
-            });
-
-            function createNavLinks() {
-                return `
-                    <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
-                    <li><a href="mission.html" class="hover:text-blue-400">Mission</a></li>
-                    <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
-                    <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
-                    <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
-                    <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
-                `;
-            }
-
-            function closeMobileMenu() {
-                mobileNav.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }
-        });
-    </script>
-
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section mission-hero">
-            <div class="hero-overlay">
-                <div class="container">
-                    <h1>Our Mission</h1>
-                    <p>Driving excellence in construction and engineering</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mission Content -->
-        <section class="mission-content container">
-            <div class="content-card">
-                <h2>Building a Better Future</h2>
-                <p class="highlight">At <strong>GOLDENBRA</strong>, our mission is to deliver exceptional construction services that exceed client expectations while maintaining the highest standards of quality and safety.</p>
-                
-                <div class="mission-grid">
-                    <div class="mission-item">
-                        <i class="fas fa-bullseye"></i>
-                        <h3>Quality Assurance</h3>
-                        <p>We ensure every project meets international standards and client specifications.</p>
-                    </div>
-                    <div class="mission-item">
-                        <i class="fas fa-users"></i>
-                        <h3>Client-Centric Approach</h3>
-                        <p>Your satisfaction is our priority. We tailor solutions to meet your unique needs.</p>
-                    </div>
-                    <div class="mission-item">
-                        <i class="fas fa-globe"></i>
-                        <h3>Sustainable Practices</h3>
-                        <p>We incorporate eco-friendly materials and methods in all our projects.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="mission.html">Our Mission</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/goldenbra-investments-ltd/"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
-            </div>
+<body class="bg-gray-100 text-gray-900">
+  <!-- Navbar (updated for pages folder) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create navigation structure
+      const header = document.createElement('header');
+      header.className = 'bg-gray-900 text-white py-4 shadow-md';
+      header.innerHTML = `
+        <div class="container mx-auto flex justify-between items-center px-6">
+          <a href="../index.html" class="text-2xl font-bold">GOLDENBRA</a>
+          <nav class="hidden md:flex">
+            <ul class="flex space-x-6">
+              ${createNavLinks()}
+              <li class="relative">
+                <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                  <i class="fas fa-lock"></i>
+                  <span>Admin</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button class="md:hidden text-2xl" id="mobile-menu-toggle" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
-    </footer>
+        <div id="mobile-nav" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-xl hidden">
+          <button id="mobile-nav-close" class="absolute top-6 right-6 text-3xl text-white" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+          <ul class="text-center space-y-4">
+            ${createNavLinks()}
+            <li>
+              <a href="../admin/login.html" class="flex items-center space-x-2 hover:text-blue-400">
+                <i class="fas fa-lock"></i>
+                <span>Admin Login</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      `;
 
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+      // Insert header at the top of the body
+      document.body.insertBefore(header, document.body.firstChild);
+
+      // Select elements after insertion
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileClose = document.getElementById('mobile-nav-close');
+
+      // Mobile menu functionality
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileNav.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      });
+
+      mobileClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+
+      // Close mobile nav when clicking outside it
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.classList.contains('hidden') &&
+            !mobileNav.contains(e.target) &&
+            !mobileToggle.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Close mobile menu on clicking any nav link (allow navigation to occur)
+      const navLinks = mobileNav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(closeMobileMenu, 100);
+        });
+      });
+
+      function createNavLinks() {
+        return `
+          <li><a href="../index.html" class="hover:text-blue-400">Home</a></li>
+          <li><a href="mission.html" class="hover:text-blue-400">Mission</a></li>
+          <li><a href="profile.html" class="hover:text-blue-400">Profile</a></li>
+          <li><a href="services.html" class="hover:text-blue-400">Services</a></li>
+          <li><a href="details.html" class="hover:text-blue-400">Details</a></li>
+          <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
+        `;
+      }
+
+      function closeMobileMenu() {
+        mobileNav.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+  </script>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="relative h-64 flex items-center justify-center text-white text-center" style="background: url('https://via.placeholder.com/1920x1080') center/cover;">
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="relative z-10 p-8">
+        <h1 class="text-4xl font-bold">Privacy Policy</h1>
+        <p class="text-lg mt-2">Your privacy is important to us</p>
+      </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="container mx-auto py-16">
+      <div class="content-card bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Privacy Policy</h2>
+        <p class="text-gray-600 mb-6">
+          Effective Date: <span id="current-date"></span>
+        </p>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">1. Introduction</h3>
+          <p class="text-gray-600 mb-4">
+            GOLDENBRA INVESTMENT LTD ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="https://www.goldenbra.com" class="text-blue-600 hover:underline">https://www.goldenbra.com</a> (the "Site"). Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Site.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">2. Information We Collect</h3>
+          <p class="text-gray-600 mb-4">
+            We may collect personal and non-personal information about you in various ways, including:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li><strong>Personal Information:</strong> Name, email address, phone number, postal address, and other identifiers.</li>
+            <li><strong>Usage Data:</strong> IP address, browser type, operating system, referring URLs, pages visited, and access times.</li>
+            <li><strong>Cookies and Tracking Technologies:</strong> We use cookies, web beacons, and similar technologies to collect information about your interactions with the Site.</li>
+          </ul>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">3. How We Use Your Information</h3>
+          <p class="text-gray-600 mb-4">
+            We use the information we collect for the following purposes:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>To provide, operate, and maintain our Site.</li>
+            <li>To improve, personalize, and expand our Site.</li>
+            <li>To understand and analyze how you use our Site.</li>
+            <li>To develop new products, services, features, and functionality.</li>
+            <li>To communicate with you, either directly or through one of our partners, including for customer service, updates, and marketing purposes.</li>
+            <li>To process transactions and send you related information.</li>
+            <li>To detect, prevent, and address technical issues.</li>
+          </ul>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">4. Sharing Your Information</h3>
+          <p class="text-gray-600 mb-4">
+            We may share your information in the following situations:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li><strong>With Service Providers:</strong> We may share your information with third-party vendors, service providers, contractors, or agents who perform services for us or on our behalf.</li>
+            <li><strong>For Legal Reasons:</strong> We may disclose your information if required to do so by law or in response to valid requests by public authorities.</li>
+            <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred.</li>
+          </ul>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">5. Data Security</h3>
+          <p class="text-gray-600 mb-4">
+            We implement appropriate technical and organizational measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no internet transmission is completely secure, and we cannot guarantee absolute security.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">6. Your Rights</h3>
+          <p class="text-gray-600 mb-4">
+            Depending on your location, you may have the following rights regarding your personal information:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li><strong>Access:</strong> Request access to the personal information we hold about you.</li>
+            <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+            <li><strong>Deletion:</strong> Request deletion of your personal information.</li>
+            <li><strong>Objection:</strong> Object to the processing of your personal information.</li>
+            <li><strong>Restriction:</strong> Request restriction of processing your personal information.</li>
+            <li><strong>Portability:</strong> Request a copy of your personal information in a structured, machine-readable format.</li>
+          </ul>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">7. Cookies and Tracking Technologies</h3>
+          <p class="text-gray-600 mb-4">
+            We use cookies and similar tracking technologies to track activity on our Site and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">8. Third-Party Links</h3>
+          <p class="text-gray-600 mb-4">
+            Our Site may contain links to third-party websites that are not operated by us. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party sites or services.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">9. Children's Privacy</h3>
+          <p class="text-gray-600 mb-4">
+            Our Site is not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">10. Changes to This Privacy Policy</h3>
+          <p class="text-gray-600 mb-4">
+            We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.
+          </p>
+        </article>
+
+        <article class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">11. Contact Us</h3>
+          <p class="text-gray-600 mb-4">
+            If you have any questions about this Privacy Policy, please contact us at:
+            <br>
+            <strong>Email:</strong> info@goldenbra.com
+            <br>
+            <strong>Phone:</strong> +260 966 994 956
+            <br>
+            <strong>Address:</strong> Plot 48 Weighbridge Area, Solwezi, Zambia
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <h4 class="text-lg font-semibold">Quick Links</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="mission.html" class="hover:underline">Our Mission</a></li>
+          <li><a href="services.html" class="hover:underline">Services</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Legal</h4>
+        <ul class="mt-2 space-y-2">
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="#" class="hover:underline">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold">Connect</h4>
+        <div class="mt-2 space-x-4">
+          <a href="https://www.linkedin.com/company/goldenbra-investments-ltd/" class="text-blue-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-blue-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <p>&copy; 2015-<span id="current-year"></span> GOLDENBRA INVESTMENT LTD</p>
+    </div>
+  </footer>
+
+  <script>
+    // Update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Update effective date
+    const currentDate = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    document.getElementById('current-date').textContent = currentDate;
+  </script>
 </body>
 </html>
